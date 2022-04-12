@@ -5,18 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Initial.unity
-    guid: 2b035159299ad0c4681b7116fd2e9157
+    path: Assets/MainProject/GameScenes/InitialScene.unity
+    guid: ce621d9ea9b9ec949abd4f544f686e9e
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 81cdc51a8718dea428d18c2049a89e18
-  - enabled: 1
-    path: Assets/Scenes/Dungeon.unity
-    guid: 114d9f5ea8ed2eb48a0c7b4f6b7655a0
+    path: Assets/MainProject/GameScenes/MainLevel.unity
+    guid: 89f50a667bbf1924caf9b279909118af
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: f20fad178be332a49bb01eb887347aa4,
       type: 2}

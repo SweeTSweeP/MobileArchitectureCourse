@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6915456595502312459
+--- !u!1 &1420733277324897261
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6915456595502312468}
-  - component: {fileID: 6915456595502312469}
-  - component: {fileID: 6915456595502312458}
-  - component: {fileID: 534669903}
+  - component: {fileID: 1420733277324897266}
+  - component: {fileID: 1420733277324897267}
+  - component: {fileID: 1420733277324897260}
+  - component: {fileID: 7945470243896025169}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6915456595502312468
+--- !u!4 &1420733277324897266
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915456595502312459}
+  m_GameObject: {fileID: 1420733277324897261}
   m_LocalRotation: {x: 0.5341385, y: 0, z: 0, w: 0.845397}
   m_LocalPosition: {x: 10.43, y: 10.5, z: 2.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 64.57101, y: 0, z: 0}
---- !u!20 &6915456595502312469
+--- !u!20 &1420733277324897267
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915456595502312459}
+  m_GameObject: {fileID: 1420733277324897261}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
@@ -76,27 +76,27 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6915456595502312458
+--- !u!81 &1420733277324897260
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915456595502312459}
+  m_GameObject: {fileID: 1420733277324897261}
   m_Enabled: 1
---- !u!114 &534669903
+--- !u!114 &7945470243896025169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6915456595502312459}
+  m_GameObject: {fileID: 1420733277324897261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 360f2fdee7b94e90bbabe9cd0477efe5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dbaa4d862694fd68946fce8959b13b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationAngleX: 55
-  Distance: 10
-  OffsetY: 0.5
+  rotationAngleX: 55
+  distance: 10
+  offsetY: 0.5
   _following: {fileID: 0}

@@ -1214,6 +1214,8 @@ GameObject:
   - component: {fileID: 5924138165502886369}
   - component: {fileID: 5924138165512591687}
   - component: {fileID: 5924138166265399246}
+  - component: {fileID: 5014204256869680405}
+  - component: {fileID: 5014204256869680404}
   m_Layer: 12
   m_Name: hero
   m_TagString: Player
@@ -1271,8 +1273,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b4024fa63c4039b3ed513573f9f84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterController: {fileID: 0}
+  _characterController: {fileID: 5014204256869680405}
   _animator: {fileID: 5924138165512591687}
+--- !u!143 &5014204256869680405
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924138165503174293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 1
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5014204256869680404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924138165503174293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f92e653c1974646be494d468e55919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 5014204256869680405}
+  movementSpeed: 4
 --- !u!1 &5924138165503176675
 GameObject:
   m_ObjectHideFlags: 0

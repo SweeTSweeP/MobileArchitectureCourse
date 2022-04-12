@@ -12,18 +12,8 @@ namespace MainProject.Scripts.Hero
         [SerializeField] private float movementSpeed;
         
         private IInputService _inputService;
-        private Camera _camera;
 
-        private void Awake()
-        {
-            _inputService = Game.InputService;
-        }
-
-        private void Start()
-        {
-            _camera = Camera.main;
-            CameraFollow();
-        }
+        private void Awake() => _inputService = Game.InputService;
 
         private void Update()
         {
@@ -31,7 +21,7 @@ namespace MainProject.Scripts.Hero
 
             if (_inputService.Axis.sqrMagnitude > Constants.Epsilon)
             {
-                movementVector = _camera.transform.TransformDirection(_inputService.Axis);
+                movementVector = Camera.main.transform.TransformDirection(_inputService.Axis);
                 movementVector.y = 0;
                 movementVector.Normalize();
 
@@ -42,8 +32,5 @@ namespace MainProject.Scripts.Hero
             
             characterController.Move(movementSpeed * movementVector * Time.deltaTime);
         }
-
-        private void CameraFollow() => 
-            _camera.GetComponent<CameraFollow>().Follow(gameObject);
     }
 }
