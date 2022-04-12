@@ -1,4 +1,4 @@
-﻿using MainProject.Scripts.Services.Input;
+﻿using MainProject.Scripts.Services;
 using UnityEngine;
 
 namespace MainProject.Scripts.Infrastructure
