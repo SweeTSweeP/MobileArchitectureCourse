@@ -1,6 +1,7 @@
 ﻿using System;
 using MainProject.Scripts.CameraLogic;
 using MainProject.Scripts.Infrastructure;
+using MainProject.Scripts.Infrastructure.Services;
 using MainProject.Scripts.Services;
 using UnityEngine;
 
@@ -8,12 +9,17 @@ namespace MainProject.Scripts.Hero
 {
     public class HeroMove : MonoBehaviour
     {
-        [SerializeField] private CharacterController characterController;
-        [SerializeField] private float movementSpeed;
-        
+        [SerializeField] private float movementSpeed = 10f;
+
+        private CharacterController _characterController;
         private IInputService _inputService;
 
-        private void Awake() => _inputService = Game.InputService;
+        private void Awake()
+        {
+            _inputService = AllServices.Container.Single<IInputService>();
+
+            _characterController = GetComponent<CharacterController>();
+        }
 
         private void Update()
         {
@@ -30,7 +36,7 @@ namespace MainProject.Scripts.Hero
 
             movementVector += Physics.gravity;
             
-            characterController.Move(movementSpeed * movementVector * Time.deltaTime);
+            _characterController.Move(movementSpeed * movementVector * Time.deltaTime);
         }
     }
 }
