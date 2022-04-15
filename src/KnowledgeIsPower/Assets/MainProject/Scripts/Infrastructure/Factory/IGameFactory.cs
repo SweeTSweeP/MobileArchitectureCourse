@@ -1,4 +1,6 @@
-﻿using MainProject.Scripts.Infrastructure.Services;
+﻿using System.Collections.Generic;
+using MainProject.Scripts.Infrastructure.Services;
+using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 
 namespace MainProject.Scripts.Infrastructure.Factory
@@ -7,5 +9,8 @@ namespace MainProject.Scripts.Infrastructure.Factory
     {
         GameObject CreateHero(GameObject at);
         void CreateHud();
+        List<ISavedProgressReader> ProgressReaders { get; }
+        List<ISavedProgress> ProgressWriters { get; }
+        void Cleanup();
     }
 }
