@@ -1,6 +1,8 @@
-﻿namespace MainProject.Scripts.Enemy
+﻿using UnityEngine;
+
+namespace MainProject.Scripts.Enemy
 {
-    public class Follow
+    public class Follow : MonoBehaviour
     {
         
     }
