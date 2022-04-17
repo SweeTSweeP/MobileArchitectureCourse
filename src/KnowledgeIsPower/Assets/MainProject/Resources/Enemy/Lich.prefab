@@ -956,6 +956,8 @@ GameObject:
   - component: {fileID: 2580363316806263326}
   - component: {fileID: 5016566}
   - component: {fileID: 8299871896241205789}
+  - component: {fileID: 6481730119621874748}
+  - component: {fileID: 3917710203240802098}
   m_Layer: 0
   m_Name: Lich
   m_TagString: Untagged
@@ -1079,6 +1081,36 @@ MonoBehaviour:
   triggerObserver: {fileID: 5548752159002948641}
   follow: {fileID: 2580363316806263326}
   cooldown: 3
+--- !u!114 &6481730119621874748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049744211279920454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa01d80021b47c5b883143e566583c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 295880589046722657}
+  attackCooldown: 3
+  cleavage: 0.5
+  effectiveDistance: 0.5
+--- !u!114 &3917710203240802098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049744211279920454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7d4c0cde954beca43d574a8072ed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 6481730119621874748}
+  triggerObserver: {fileID: 323677591410892210}
 --- !u!1 &2073624148073039305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,6 +1386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6097191237738628848}
   - component: {fileID: 5696438287584989556}
+  - component: {fileID: 323677591410892210}
   m_Layer: 14
   m_Name: AttackZone
   m_TagString: Untagged
@@ -1388,6 +1421,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &323677591410892210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403589813627720960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b06705c8b642e2a9b80a82ecbac23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8936787975559354697
 GameObject:
   m_ObjectHideFlags: 0
