@@ -35,7 +35,16 @@ namespace MainProject.Scripts.Infrastructure.States
                 _saveLoadService.LoadProgress() 
                 ?? NewProgress();
 
-        private PlayerProgress NewProgress() => 
-            new PlayerProgress(initialLevel: "MainLevel");
+        private PlayerProgress NewProgress()
+        {
+            var progress = new PlayerProgress(initialLevel: "MainLevel");
+            
+            progress.HeroState.MaxHP = 50;
+            progress.HeroStats.Damage = 1;
+            progress.HeroStats.DamageRadius = 0.5f;
+            progress.HeroState.ResetHP();
+
+            return progress;
+        }
     }
 }

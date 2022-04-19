@@ -28,7 +28,7 @@ namespace MainProject.Scripts.Infrastructure.Factory
             return HeroGameObject;
         }
 
-        public void CreateHud() => 
+        public GameObject CreateHud() => 
             InstantiateRegistered(AssetPath.UiPath);
 
         public void Cleanup()

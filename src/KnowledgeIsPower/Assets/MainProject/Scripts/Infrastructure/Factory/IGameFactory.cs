@@ -13,7 +13,7 @@ namespace MainProject.Scripts.Infrastructure.Factory
         List<ISavedProgress> ProgressWriters { get; }
         GameObject HeroGameObject { get; set; }
         GameObject CreateHero(GameObject at);
-        void CreateHud();
+        GameObject CreateHud();
         void Cleanup();
     }
 }

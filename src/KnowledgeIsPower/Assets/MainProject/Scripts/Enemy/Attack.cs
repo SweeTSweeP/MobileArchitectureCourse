@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using CodeBase.Enemy;
+using MainProject.Scripts.Hero;
 using MainProject.Scripts.Infrastructure.Factory;
 using MainProject.Scripts.Infrastructure.Services;
+using MainProject.Scripts.Logic;
 using UnityEngine;
 
 namespace MainProject.Scripts.Enemy
@@ -15,6 +17,7 @@ namespace MainProject.Scripts.Enemy
         [SerializeField] private float attackCooldown = 3f;
         [SerializeField] private float cleavage = 0.5f;
         [SerializeField] private float effectiveDistance = 0.5f;
+        [SerializeField] private float damage = 10f;
 
         private IGameFactory _gameFactory;
         private Transform _heroTransform;
@@ -45,6 +48,7 @@ namespace MainProject.Scripts.Enemy
             if (Hit(out Collider hit))
             {
                 PhysicsDebug.DrawDebug(StartPoint(), cleavage, 1);
+                hit.transform.GetComponent<IHealth>().TakeDamage(damage);
             }
         }
 
