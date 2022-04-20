@@ -3,6 +3,7 @@ using MainProject.Scripts.CameraLogic;
 using MainProject.Scripts.Hero;
 using MainProject.Scripts.Infrastructure.Factory;
 using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
+using MainProject.Scripts.Logic;
 using MainProject.Scripts.UI;
 using UnityEngine;
 using UnityEngine.Windows;
@@ -13,6 +14,7 @@ namespace MainProject.Scripts.Infrastructure.States
     public class LoadLevelState : IPayloadedState<string>
     {
         private const string InitialPoint = "InitialPoint";
+        private const string EnemySpawner = "EnemySpawner";
 
         private GameStateMachine _gameStateMachine;
         private SceneLoader _sceneLoader;
@@ -62,11 +64,22 @@ namespace MainProject.Scripts.Infrastructure.States
 
         private void InitGameWorld()
         {
+            InitSpawners();
+            
             var hero = InitHero();
 
             InitHud(hero);
 
             CameraFollow(hero);
+        }
+
+        private void InitSpawners()
+        {
+            foreach (GameObject spawnerGameObject in GameObject.FindGameObjectsWithTag(EnemySpawner))
+            {
+                var spawner = spawnerGameObject.GetComponent<EnemySpawner>();
+                _gameFactory.Register(spawner);
+            }
         }
 
         private GameObject InitHero() => 

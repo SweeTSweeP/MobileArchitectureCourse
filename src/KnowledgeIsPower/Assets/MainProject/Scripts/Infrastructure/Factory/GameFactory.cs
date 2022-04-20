@@ -51,7 +51,7 @@ namespace MainProject.Scripts.Infrastructure.Factory
             return gameObject;
         }
 
-        private void Register(ISavedProgressReader progressReader)
+        public void Register(ISavedProgressReader progressReader)
         {
             if (progressReader is ISavedProgress progressWriter)
                 ProgressWriters.Add(progressWriter);
