@@ -1,9 +1,7 @@
-﻿using System;
+﻿using System.Collections;
 using System.Linq;
 using CodeBase.Enemy;
-using MainProject.Scripts.Hero;
 using MainProject.Scripts.Infrastructure.Factory;
-using MainProject.Scripts.Infrastructure.Services;
 using MainProject.Scripts.Logic;
 using UnityEngine;
 
@@ -19,21 +17,37 @@ namespace MainProject.Scripts.Enemy
         [SerializeField] private float effectiveDistance = 0.5f;
         [SerializeField] private float damage = 10f;
 
+        public float EffectiveDistance
+        {
+            get => effectiveDistance;
+            set => effectiveDistance = value;
+        }
+
+        public float Cleavage
+        {
+            get => cleavage;
+            set => cleavage = value;
+        }
+
+        public float Damage
+        {
+            get => damage;
+            set => damage = value;
+        }
+
         private IGameFactory _gameFactory;
         private Transform _heroTransform;
         private float _attackCooldown;
-        private bool _isAttacking;
+        [SerializeField] private bool _isAttacking;
         private int _layerMask;
         private Collider[] _hits = new Collider[1];
-        private bool _attackIsActive;
+        [SerializeField] private bool _attackIsActive;
 
-        private void Awake()
-        {
-            _gameFactory = AllServices.Container.Single<IGameFactory>();
-            _gameFactory.HeroCreated += OnHeroCreated;
+        public void Construct(Transform heroTransform) => 
+            _heroTransform = heroTransform;
 
+        private void Awake() => 
             _layerMask = 1 << LayerMask.NameToLayer("Player");
-        }
 
         private void Update()
         {
@@ -45,11 +59,19 @@ namespace MainProject.Scripts.Enemy
 
         private void OnAttack()
         {
-            if (Hit(out Collider hit))
-            {
-                PhysicsDebug.DrawDebug(StartPoint(), cleavage, 1);
-                hit.transform.GetComponent<IHealth>().TakeDamage(damage);
-            }
+            if (!Hit(out var hit)) return;
+            
+            PhysicsDebug.DrawDebug(StartPoint(), cleavage, 1);
+            hit.transform.GetComponent<IHealth>().TakeDamage(damage);
+
+            if (!animator.gameObject.name.Contains("Lich")) StartCoroutine(InvalidOnAttackEnded());
+        }
+
+        private IEnumerator InvalidOnAttackEnded()
+        {
+            yield return new WaitForSeconds(1 + 1 / 65);
+            
+            OnAttackEnded();
         }
 
         private void OnAttackEnded()
@@ -97,8 +119,5 @@ namespace MainProject.Scripts.Enemy
         {
             return _attackCooldown <= 0;
         }
-
-        private void OnHeroCreated() => 
-            _heroTransform = _gameFactory.HeroGameObject.transform;
     }
 }

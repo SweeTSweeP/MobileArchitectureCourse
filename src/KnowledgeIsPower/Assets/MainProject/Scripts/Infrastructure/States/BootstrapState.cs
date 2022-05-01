@@ -1,9 +1,12 @@
-﻿using MainProject.Scripts.Infrastructure.AssetManagement;
+﻿using System.ComponentModel;
+using CodeBase.Infrastructure.States;
+using MainProject.Scripts.Infrastructure.AssetManagement;
 using MainProject.Scripts.Infrastructure.Factory;
 using MainProject.Scripts.Infrastructure.Services;
 using MainProject.Scripts.Infrastructure.Services.Inputs;
 using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
 using MainProject.Scripts.Infrastructure.Services.SaveLoad;
+using MainProject.Scripts.StaticData;
 using UnityEngine;
 
 namespace MainProject.Scripts.Infrastructure.States
@@ -39,13 +42,24 @@ namespace MainProject.Scripts.Infrastructure.States
 
         private void RegisterServices()
         {
+            RegisterStaticData();
+
             _services.RegisterSingle<IInputService>(InputService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
+            _services.RegisterSingle<IGameFactory>(new GameFactory(
+                _services.Single<IAssetProvider>(),
+                _services.Single<IStaticDataService>()));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
-                _services.Single<IPersistentProgressService>(), 
+                _services.Single<IPersistentProgressService>(),
                 _services.Single<IGameFactory>()));
+        }
+
+        private void RegisterStaticData()
+        {
+            IStaticDataService staticData = new StaticDataService();
+            staticData.LoadMonsters();
+            _services.RegisterSingle(staticData);
         }
 
         private static IInputService InputService()

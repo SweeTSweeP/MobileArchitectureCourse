@@ -1,6 +1,4 @@
-﻿using MainProject.Scripts.Infrastructure.Factory;
-using MainProject.Scripts.Infrastructure.Services;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MainProject.Scripts.Enemy
 {
@@ -9,18 +7,10 @@ namespace MainProject.Scripts.Enemy
         [SerializeField] private float speed;
 
         private Transform _heroTransform;
-        private IGameFactory _gameFactory;
         private Vector3 _positionToLook;
-
-        private void Start()
-        {
-            _gameFactory = AllServices.Container.Single<IGameFactory>();
-
-            if (HeroExists())
-                InitializeHeroTransform();
-            else
-                _gameFactory.HeroCreated += InitializeHeroTransform;
-        }
+        
+        public void Construct(Transform heroTransform) => 
+            _heroTransform = heroTransform;
 
         private void Update()
         {
@@ -30,12 +20,6 @@ namespace MainProject.Scripts.Enemy
 
         private bool Initialized() => 
             _heroTransform != null;
-
-        private void InitializeHeroTransform() => 
-            _heroTransform = _gameFactory.HeroGameObject.transform;
-
-        private bool HeroExists() => 
-            _gameFactory.HeroGameObject != null;
 
         private void RotateTowardsHero()
         {

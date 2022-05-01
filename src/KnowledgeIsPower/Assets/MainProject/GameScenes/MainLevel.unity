@@ -601,6 +601,11 @@ PrefabInstance:
       propertyPath: _slain
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7452434044597153076, guid: 84d695c2f6d348b449fd3105ea618d72,
+        type: 3}
+      propertyPath: monsterTypeId
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d695c2f6d348b449fd3105ea618d72, type: 3}
 --- !u!4 &519103036 stripped
