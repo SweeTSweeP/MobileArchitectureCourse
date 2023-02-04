@@ -5,6 +5,7 @@ using MainProject.Scripts.Infrastructure.Factory;
 using MainProject.Scripts.Infrastructure.Services;
 using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
 using MainProject.Scripts.Infrastructure.Services.SaveLoad;
+using MainProject.Scripts.StaticData;
 
 namespace MainProject.Scripts.Infrastructure.States
 {
@@ -23,7 +24,8 @@ namespace MainProject.Scripts.Infrastructure.States
                     sceneLoader, 
                     curtain, 
                     services.Single<IGameFactory>(), 
-                    services.Single<IPersistentProgressService>()),
+                    services.Single<IPersistentProgressService>(),
+                    services.Single<IStaticDataService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(
                     this, 
                     services.Single<IPersistentProgressService>(), 

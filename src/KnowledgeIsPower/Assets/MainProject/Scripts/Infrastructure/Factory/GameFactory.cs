@@ -5,6 +5,7 @@ using MainProject.Scripts.Infrastructure.AssetManagement;
 using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
 using MainProject.Scripts.Infrastructure.Services.Randomizer;
 using MainProject.Scripts.Logic;
+using MainProject.Scripts.Logic.EnemySpawners;
 using MainProject.Scripts.StaticData;
 using MainProject.Scripts.UI;
 using UnityEngine;
@@ -80,6 +81,16 @@ namespace MainProject.Scripts.Infrastructure.Factory
             lootPiece.Construct(_progressService.Progress.WorldData);
             
             return lootPiece;
+        }
+
+        public void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId)
+        {
+            var spawner = InstantiateRegistered(AssetPath.Spawner, at)
+                .GetComponent<SpawnPoint>();
+
+            spawner.Construct(this);
+            spawner.Id = spawnerId;
+            spawner.MonsterTypeId = monsterTypeId;
         }
 
         public GameObject CreateHud()

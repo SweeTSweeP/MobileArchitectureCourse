@@ -15,8 +15,8 @@ namespace MainProject.Scripts.Infrastructure.Factory
         GameObject CreateHero(GameObject at);
         GameObject CreateHud();
         void Cleanup();
-        void Register(ISavedProgressReader progressReader);
         GameObject CreateMonster(MonsterTypeId typeId, Transform parent);
         LootPiece CreateLoot();
+        void CreateSpawner(Vector3 at, string spawnerId, MonsterTypeId monsterTypeId);
     }
 }

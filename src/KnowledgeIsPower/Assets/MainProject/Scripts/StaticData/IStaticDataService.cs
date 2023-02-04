@@ -7,5 +7,6 @@ namespace MainProject.Scripts.StaticData
     {
         void LoadMonsters();
         MonsterStaticData ForMonster(MonsterTypeId typeId);
+        LevelStaticDataInfo FolLevel(string sceneName);
     }
 }
