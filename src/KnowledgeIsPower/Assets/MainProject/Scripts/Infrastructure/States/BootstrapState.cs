@@ -5,6 +5,7 @@ using MainProject.Scripts.Infrastructure.Factory;
 using MainProject.Scripts.Infrastructure.Services;
 using MainProject.Scripts.Infrastructure.Services.Inputs;
 using MainProject.Scripts.Infrastructure.Services.PersistentProgress;
+using MainProject.Scripts.Infrastructure.Services.Randomizer;
 using MainProject.Scripts.Infrastructure.Services.SaveLoad;
 using MainProject.Scripts.StaticData;
 using UnityEngine;
@@ -46,10 +47,13 @@ namespace MainProject.Scripts.Infrastructure.States
 
             _services.RegisterSingle<IInputService>(InputService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider());
+            _services.RegisterSingle<IRandomService>(new RandomService());
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
             _services.RegisterSingle<IGameFactory>(new GameFactory(
                 _services.Single<IAssetProvider>(),
-                _services.Single<IStaticDataService>()));
+                _services.Single<IStaticDataService>(),
+                _services.Single<IRandomService>(),
+                _services.Single<IPersistentProgressService>()));
             _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(
                 _services.Single<IPersistentProgressService>(),
                 _services.Single<IGameFactory>()));
